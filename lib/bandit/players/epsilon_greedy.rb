@@ -3,7 +3,7 @@ module Bandit
     include Memoizable
 
     def choose_alternative(experiment)
-      epsilon = @config['epsilon'].to_f || 0.1
+      epsilon = get_option(experiment, :epsilon, 0.1).to_f
 
       # choose best with probability of 1-epsilon
       if rand <= (1-epsilon)

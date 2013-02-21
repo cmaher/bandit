@@ -1,6 +1,7 @@
 # Use this setup block to configure all options for Bandit.
 Bandit.setup do |config|
   yml = YAML.load_file("#{Rails.root}/config/bandit.yml")[Rails.env]
+  yml = HashWithIndifferentAccess.new(yml)
 
   config.player = yml['player']
   config.player_config = yml['player_config']

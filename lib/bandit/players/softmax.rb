@@ -4,7 +4,7 @@ module Bandit
 
     def choose_alternative(experiment)
       memoize(experiment.name) {
-        t = getTemperature(experiment)
+        t = get_option(experiment, :temperature, 0.2).to_f
         norms = experiment.alternatives.map { |alt| 
           Math.exp(experiment.conversion_rate(alt) / (t * 100))
         }
@@ -27,10 +27,6 @@ module Bandit
       }
 
       return probs.size - 1
-    end
-
-    def getTemperature(experiment)
-      @config['temperature'].to_f || 0.2
     end
   end
 end

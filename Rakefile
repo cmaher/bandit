@@ -14,6 +14,13 @@ Rake::RDocTask.new("doc") { |rdoc|
   rdoc.rdoc_files.include('lib/**/*.rb')
 }
 
+desc "Run all unit tests"
+Rake::TestTask.new("test_all") { |t|
+  t.libs << "lib"
+  t.test_files = FileList['test/*_test.rb']
+  t.verbose = true
+}
+
 desc "Run all unit tests with memory storage"
 Rake::TestTask.new("test_memory") { |t|
   t.libs << "lib"
@@ -39,5 +46,12 @@ desc "Run all unit tests with redis storage"
 Rake::TestTask.new("test_redis") { |t|
   t.libs << "lib"
   t.test_files = FileList['test/redis_*.rb']
+  t.verbose = true
+}
+
+desc "Run unit test for cascading options"
+Rake::TestTask.new("test_cascading_options") { |t|
+  t.libs << "lib"
+  t.test_files = FileList['test/cascading_options_test.rb']
   t.verbose = true
 }

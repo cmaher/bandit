@@ -25,7 +25,12 @@ To set up an experiment, add it either somewhere in your code or in the bandit i
       exp.alternatives = [ 20, 30, 40 ]
       exp.title = "Click Test"
       exp.description = "A test of clicks on purchase page with varying link sizes."
+
+      #A custom configuration option for this experiment
+      exp.options[:epsilon] = 0.7
     }
+
+Player config (player_config) values are chosen in a cascading manner. Experiment options take precedence over config options, which take precedence over default values.  Options can be assigned in multiple places, with the item of highest precedence being chosen on a per-experiment basis.  Experiment options (exp.options) only overwrite player_config values and therefore only apply to players.
 
 
 == View

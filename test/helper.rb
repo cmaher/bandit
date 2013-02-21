@@ -1,5 +1,6 @@
 require 'rubygems'
 require 'test/unit'
+require 'mocha/setup'
 require 'yaml'
 
 $:.unshift(File.join File.dirname(__FILE__), '..', 'lib')

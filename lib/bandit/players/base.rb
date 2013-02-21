@@ -35,5 +35,13 @@ module Bandit
     def name
       self.class.to_s
     end
+
+    private 
+
+    def get_option(exp, name, default)
+      return exp.options[name] unless exp.options[name].nil?
+      return @config[name] unless @config[name].nil?
+      return default
+    end
   end
 end

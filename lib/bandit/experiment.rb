@@ -1,6 +1,8 @@
 module Bandit
   class Experiment
     attr_accessor :name, :title, :description, :alternatives
+    attr_reader :options
+
     @@instances = []
 
     def self.create(name)
@@ -14,6 +16,7 @@ module Bandit
       args.each { |k,v| send "#{k}=", v } unless args.nil?
       @@instances << self
       @storage = Bandit.storage
+      @options = {}
     end
 
     def self.instances
